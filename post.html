@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/aquajax.js" ></script>
+<script>
+function showName(str) {
+    //show loading icon
+    var loadingdiv = document.getElementById('loading');
+    loadingdiv.style.display = "block";
+    
+    //get the input name
+    var str = document.getElementById('username').value;
+    
+    if (str=="") {
+        document.getElementById("txtHint").innerHTML="";
+        return;
+    } 
+    // url of server resource
+    var url = "showName_post.php";
+    //parameters to be sent
+    var parameter = "q="+str;
+    // the 'id' , where output to be displayed ! here "txtHint"
+    var output_id = "txtHint";
+    
+    
+    // call the function of Post_send() function for method = "POST"
+    post_send(url, parameter, output_id);
+
+    
+    //hide the loading icon
+    var loadingdiv = document.getElementById('loading');
+    loadingdiv.style.display = "none";
+
+}
+</script>
+</head>
+<body>
+    <h1>Aquajax - POST method</h1>
+    
+<form>
+<label>Your name: </label>
+<input type="text" id="username" size="20"  />    
+<input type="button" onClick="showName()" value="submit">
+</form>
+
+<br>
+<div id='loading' style='display: none;'><img src="loading.gif" title="Loading" /></div>
+<div id="txtHint"><b>Name will appear here !</b></div>
+
+</body>
+</html>
